@@ -13,5 +13,6 @@ public class ProvenienceApplication {
 		// Ask Spring to create object and print msg
 		Welcome msg = (Welcome) context.getBean("welcome");
 		System.out.println(msg);
+
 	}
 }
