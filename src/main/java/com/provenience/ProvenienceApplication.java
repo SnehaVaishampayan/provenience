@@ -1,18 +1,32 @@
 package com.provenience;
 
+import com.provenience.project.Project;
+import com.provenience.project.ProjectStatus;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
+
+import java.time.LocalDate;
 
 @SpringBootApplication
 public class ProvenienceApplication {
+	private static final Logger log = (Logger) LoggerFactory.getLogger(ProvenienceApplication.class);
 	public static void main(String[] args) {
-		ConfigurableApplicationContext context = SpringApplication.run(ProvenienceApplication.class, args);
-//		System.out.println(new com.provenience.Welcome().getWelcome());
-
-		// Ask Spring to create object and print msg
-		Welcome msg = (Welcome) context.getBean("welcome");
-		System.out.println(msg);
-
+		SpringApplication.run(ProvenienceApplication.class, args);
+//		ConfigurableApplicationContext context = SpringApplication.run(ProvenienceApplication.class, args);
+//		log.info("My Provenience Application has started^^ ");
+//		Welcome msg = (Welcome) context.getBean("welcome");
+//		System.out.println(msg);
+	}
+	@Bean
+	CommandLineRunner  project() {
+		return args -> {
+			Project p = new Project(1, "project1", LocalDate.now(), LocalDate.now(), ProjectStatus.COMPLETED );
+            log.info("p {}", p);
+		};
 	}
 }
