@@ -1,5 +1,6 @@
 package com.provenience.project;
 
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -25,7 +26,7 @@ public class ProjectController {
     Project getProjectById(@PathVariable Integer id){
         Optional<Project> project = projRepo.getProjectById(id);
         if(project.isEmpty()) {
-            throw  new ResponseStatusException(HttpStatus.NOT_FOUND);
+            throw new ProjectNotFoundException();
         }
         return project.get();
     }
@@ -33,7 +34,7 @@ public class ProjectController {
     // post/Create
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED) // return created status.. instead of 200.. its 201
-    void addProject(@RequestBody Project project) {
+    void addProject(@Valid @RequestBody Project project) {
         projRepo.addProject(project);
     }
 
