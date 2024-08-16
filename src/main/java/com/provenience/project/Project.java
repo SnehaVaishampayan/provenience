@@ -6,9 +6,9 @@ import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 public record Project(
-        @NotEmpty
-        Integer id,
         @NotNull
+        Integer id,
+        @NotEmpty
         String name,
         LocalDate startedOn,
         LocalDate endedOn,

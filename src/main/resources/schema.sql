@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS Project (
+    id INT NOT NULL,
+    name VARCHAR(256) NOT NULL,
+    startedOn TIMESTAMP NOT NULL,
+    endedOn TIMESTAMP NOT NULL,
+    projectStatus VARCHAR(250) NOT NULL,
+    PRIMARY KEY(id)
+);

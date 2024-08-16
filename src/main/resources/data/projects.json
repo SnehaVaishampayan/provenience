@@ -1,0 +1,40 @@
+
+{
+  "projects": [
+    {
+      "id": 1,
+      "name": "project11",
+      "startedOn": "2024-01-01",
+      "endedOn": "2024-01-11",
+      "projectStatus": "STARTED"
+    },
+    {
+      "id": 2,
+      "name": "project22",
+      "startedOn": "2024-02-02",
+      "endedOn": "2024-02-22",
+      "projectStatus": "STARTED"
+    },
+    {
+      "id": 3,
+      "name": "project33",
+      "startedOn": "2024-03-03",
+      "endedOn": "2024-03-30",
+      "projectStatus": "PROGRESS"
+    },
+    {
+    "id": 4,
+    "name": "project44",
+    "startedOn": "2024-04-04",
+    "endedOn": "2024-04-14",
+    "projectStatus": "COMPLETED"
+    },
+    {
+    "id": 5,
+    "name": "project55",
+    "startedOn": "2024-05-05",
+    "endedOn": "2024-05-15",
+    "projectStatus": "COMPLETED"
+    }
+  ]
+}

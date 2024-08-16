@@ -3,7 +3,6 @@ package com.provenience.project;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,10 +17,12 @@ public class ProjectController {
     public ProjectController(ProjectRepository projRepo) {
         this.projRepo = projRepo;
     }
+
     @GetMapping("")
     List<Project> getAllProjects() {
         return projRepo.getAllProjects();
     }
+
     @GetMapping("/{id}")
     Project getProjectById(@PathVariable Integer id){
         Optional<Project> project = projRepo.getProjectById(id);
@@ -33,13 +34,12 @@ public class ProjectController {
 
     // post/Create
     @PostMapping("")
-    @ResponseStatus(HttpStatus.CREATED) // return created status.. instead of 200.. its 201
+    @ResponseStatus(HttpStatus.CREATED) // return created status. instead of 200. its 201
     void addProject(@Valid @RequestBody Project project) {
         projRepo.addProject(project);
     }
 
     // update
-
     @PutMapping("")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     void updateProject(@RequestBody Project project) {
@@ -49,7 +49,16 @@ public class ProjectController {
     // delete
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
-    void delete(@PathVariable Integer id) {
-        projRepo.delete(id);
+    void deleteProject(@PathVariable Integer id) {
+        projRepo.deleteProject(id);
     }
+
+    //    @GetMapping("/{projectStatus}")
+//    List<Project> getProjectByStatus(@PathVariable String projectStatus){
+//        List<Project> projectsByStatus = projRepo.getProjectByStatus(projectStatus);
+//        if(projectsByStatus.isEmpty()) {
+//            throw new ProjectNotFoundException();
+//        }
+//        return projectsByStatus;
+//    }
 }

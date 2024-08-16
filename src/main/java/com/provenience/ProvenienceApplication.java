@@ -1,6 +1,7 @@
 package com.provenience;
 
 import com.provenience.project.Project;
+import com.provenience.project.ProjectRepository;
 import com.provenience.project.ProjectStatus;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
@@ -23,10 +24,11 @@ public class ProvenienceApplication {
 //		System.out.println(msg);
 	}
 	@Bean
-	CommandLineRunner  project() {
+	CommandLineRunner  project(ProjectRepository projectRepository) {
 		return args -> {
-			Project p = new Project(1, "project1", LocalDate.now(), LocalDate.now(), ProjectStatus.COMPLETED );
-            log.info("p {}", p);
+			Project newProject = new Project(1, "project1", LocalDate.now(), LocalDate.now(), ProjectStatus.COMPLETED );
+            log.info("p {}",newProject);
+			projectRepository.addProject(newProject);
 		};
 	}
 }
