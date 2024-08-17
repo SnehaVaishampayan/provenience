@@ -18,17 +18,5 @@ public class ProvenienceApplication {
 	private static final Logger log = (Logger) LoggerFactory.getLogger(ProvenienceApplication.class);
 	public static void main(String[] args) {
 		SpringApplication.run(ProvenienceApplication.class, args);
-//		ConfigurableApplicationContext context = SpringApplication.run(ProvenienceApplication.class, args);
-//		log.info("My Provenience Application has started^^ ");
-//		Welcome msg = (Welcome) context.getBean("welcome");
-//		System.out.println(msg);
-	}
-	@Bean
-	CommandLineRunner  project(ProjectRepository projectRepository) {
-		return args -> {
-			Project newProject = new Project(1, "project1", LocalDate.now(), LocalDate.now(), ProjectStatus.COMPLETED );
-            log.info("p {}",newProject);
-			projectRepository.addProject(newProject);
-		};
 	}
 }
