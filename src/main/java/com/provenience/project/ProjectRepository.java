@@ -60,7 +60,18 @@ public class ProjectRepository {
     }
 
     public int count() {
-        return jdbcClient.sql("SELECT * from Project").query().listOfRows().size();
+        log.info("in count ");
+//        String s = jdbcClient.sql("SELECT EXISTS (\n" +
+//                "   SELECT FROM information_schema.tables \n" +
+//                "   WHERE  table_schema = 'Provenience'\n" +
+//                "   AND    table_name   = 'Project'\n" +
+//                "   )").query().listOfRows().toString();
+
+        String s = jdbcClient.sql("SELECT * FROM information_schema.tables").query().listOfRows().toString();
+        log.info("ssss " + s);
+        int count =  jdbcClient.sql("select * from Project").query().listOfRows().size();
+        log.info("in count is " + count);
+        return count;
     }
 
     public void saveAllProjects(List<Project> projects ) {

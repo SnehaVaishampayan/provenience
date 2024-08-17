@@ -25,6 +25,7 @@ public class ProjectJSONLoader implements CommandLineRunner {
         if(projectRepository.count() == 0) {
             try (InputStream inputStream = TypeReference.class.getResourceAsStream("/data/projects.json")) {
                 ProjectsList projectsList = objectMapper.readValue(inputStream, ProjectsList.class);
+                log.info("projectsList " + projectsList.toString());
                 projectRepository.saveAllProjects(projectsList.projects());
             }
             catch (IOException ioe) {
